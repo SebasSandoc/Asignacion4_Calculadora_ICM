@@ -1,5 +1,6 @@
 package sandoval.sebastian.asignacion4_calculadora_icm
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -26,25 +27,34 @@ class MainActivity : AppCompatActivity() {
             var w = weight.text.toString().toDouble()
             var res = w/(h.pow(2))
             imc.setText(res.toString())
-            range.setText(calcularIBM(res))
+            range.setText(calcularIBM(range,res))
         }
     }
 
-    fun calcularIBM(valor: Double):String{
+    @SuppressLint("ResourceAsColor")
+    fun calcularIBM(rng: TextView, valor: Double):String{
         if(valor<18.5){
+            rng.setBackgroundColor(R.color.greenish)
             return "Bajo peso"
         }else if(valor>=18.5 && valor < 25){
+            rng.setBackgroundColor(R.color.green)
             return "normal"
         }else if(valor>=25 && valor < 30){
+            rng.setBackgroundColor(R.color.yellow)
             return "Sobrepeso"
         }else if(valor>=30 && valor < 35){
+            rng.setBackgroundColor(R.color.orange)
             return "Obesidad grado 1"
         }else if(valor>=35 && valor < 40){
+            rng.setBackgroundColor(R.color.red)
             return "Obesidad grado 2"
         }else{
+            rng.setBackgroundColor(R.color.brown)
             return "Obesidad grado 3"
         }
 
     }
+
+
 
 }
