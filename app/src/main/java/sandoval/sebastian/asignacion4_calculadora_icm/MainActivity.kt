@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         calculate.setOnClickListener {
             var h = height.text.toString().toDouble()
             var w = weight.text.toString().toDouble()
-            var res = w/h
+            var res = w/(h.pow(2))
             imc.setText(res.toString())
             range.setText(calcularIBM(res))
         }
